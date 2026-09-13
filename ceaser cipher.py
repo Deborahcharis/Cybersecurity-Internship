@@ -17,17 +17,17 @@ def decrypt(text, shift):
     return encrypt(text, -shift)
 
 
-# Get input from user
+
 text = input("Enter the text: ")
 shift = int(input("Enter the shift value: "))
 
-# Encryption
+
 encrypted = encrypt(text, shift)
 
-# Decryption
+
 decrypted = decrypt(encrypted, shift)
 
-# Display results
+
 print("\nOriginal Text  :", text)
 print("Encrypted Text:", encrypted)
 print("Decrypted Text:", decrypted)
