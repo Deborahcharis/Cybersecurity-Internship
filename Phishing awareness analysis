@@ -1,0 +1,56 @@
+def analyze_message(message):
+    red_flags = []
+
+   
+    keywords = [
+        "urgent",
+        "verify your account",
+        "click here",
+        "password",
+        "winner",
+        "congratulations",
+        "account suspended",
+        "claim now",
+        "limited time"
+    ]
+
+  
+    for word in keywords:
+        if word.lower() in message.lower():
+            red_flags.append("Suspicious keyword: " + word)
+
+   
+    if "http://" in message.lower():
+        red_flags.append("Unsecured HTTP link found")
+
+    if "bit.ly" in message.lower() or "tinyurl" in message.lower():
+        red_flags.append("Shortened/suspicious link found")
+
+   
+    if "urgent" in message.lower() or "immediately" in message.lower():
+        red_flags.append("Creates a sense of urgency")
+
+   
+    print("\n--- Phishing Analysis ---")
+
+    if red_flags:
+        print("⚠️ Possible Phishing Message")
+        print("\nRed Flags Found:")
+
+        for flag in red_flags:
+            print("-", flag)
+
+        print("\nWhy is it unsafe?")
+        print("The message contains suspicious links or keywords commonly")
+        print("used in phishing attacks to trick users into revealing")
+        print("personal information or clicking malicious links.")
+
+    else:
+        print("✅ No obvious phishing indicators found.")
+        print("However, always verify the sender and links before trusting a message.")
+
+
+# Get message from user
+message = input("Enter the email/message to analyze:\n")
+
+analyze_message(message)
